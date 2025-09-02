@@ -1,0 +1,26 @@
+# Core ML libraries - ARM64 optimized
+torch>=2.1.0
+torchvision>=0.16.0
+timm>=0.9.0
+
+# Data processing - ARM64 optimized
+numpy>=1.24.0
+pandas>=2.0.0
+Pillow>=10.0.0
+
+# ML utilities
+scikit-learn>=1.3.0
+tqdm>=4.65.0
+
+# Visualization and logging
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+
+# Additional utilities
+requests>=2.31.0
+psutil>=5.9.0
+
+# ARM64 performance optimizations
+# Note: These will be compiled from source for ARM64
+# openblas-dev and lapack-dev are installed in Dockerfile
