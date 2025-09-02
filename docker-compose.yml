@@ -73,7 +73,7 @@ services:
       --grad-accum-steps ${GRAD_ACCUM_STEPS:-1}
       --early-stop-patience ${EARLY_STOP_PATIENCE:-20}
       --model-name ${MODEL_NAME:-tf_efficientnetv2_b0.in1k}
-      --subset-size 1000
+      --subset-size 10000
 
     # Restart policy
     restart: unless-stopped
