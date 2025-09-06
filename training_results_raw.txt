@@ -533,4 +533,256 @@ Estimated train epoch duration: ~1:56:48
 Epoch 35/100:   0%|                                                                                                                                                          | 0/4811   0% ETA ?/usr/local/lib/python3.9/site-packages/torchvision/transforms/_functional_pil.py:113: RuntimeWarning: invalid value encountered in cast
   np_h += np.array(hue_factor * 255).astype(np.uint8)
 Epoch 35/100:   1%|#4                                                                                                                                                 | 47/4811   1% ETA 1:53:47Estimated train epoch duration: ~1:58:01
-Epoch 35/100:  38%|#######################################################1 
+Training completed - Average loss: 0.0257                                                                                                                                                       
+
+Starting validation...
+Estimated val epoch duration:   ~0:06:49
+Val   35/100:   1%|#3                                                                                                                                                   | 11/1207   1% ETA 07:36Estimated val epoch duration:   ~0:08:22
+Validation completed - Average loss: 0.0754                                                                                                                                                     
+[Fold 0] Epoch 35/100 | train_loss 0.0257 | val_loss 0.0754 | ACC 0.9925 P 0.9776 R 0.9888 F1 0.9831 ROC-AUC 0.9987 PR-AUC 0.9946
+Learning rate updated to: 0.000066
+
+============================================================
+Starting Epoch 36/100
+Training batches: 4811, Validation batches: 1207
+Learning rate: 0.000062
+Gradient accumulation steps: 1
+Effective batch size: 32
+============================================================
+Estimated train epoch duration: ~1:57:18
+Epoch 36/100:   0%|                                                                                                                                                          | 0/4811   0% ETA ?/usr/local/lib/python3.9/site-packages/torchvision/transforms/_functional_pil.py:113: RuntimeWarning: invalid value encountered in cast
+  np_h += np.array(hue_factor * 255).astype(np.uint8)
+Epoch 36/100:   1%|#4                                                                                                                                                 | 47/4811   1% ETA 1:56:52Estimated train epoch duration: ~1:59:40
+Training completed - Average loss: 0.0238                                                                                                                                                       
+
+Starting validation...
+Estimated val epoch duration:   ~0:07:02
+Val   36/100:   1%|#3                                                                                                                                                   | 11/1207   1% ETA 06:45Estimated val epoch duration:   ~0:07:23
+Validation completed - Average loss: 0.0835                                                                                                                                                     
+[Fold 0] Epoch 36/100 | train_loss 0.0238 | val_loss 0.0835 | ACC 0.9912 P 0.9731 R 0.9877 F1 0.9804 ROC-AUC 0.9986 PR-AUC 0.9932
+Learning rate updated to: 0.000058
+
+============================================================
+Starting Epoch 37/100
+Training batches: 4811, Validation batches: 1207
+Learning rate: 0.000054
+Gradient accumulation steps: 1
+Effective batch size: 32
+============================================================
+Estimated train epoch duration: ~1:57:15
+Epoch 37/100:   0%|                                                                                                                                                          | 0/4811   0% ETA ?/usr/local/lib/python3.9/site-packages/torchvision/transforms/_functional_pil.py:113: RuntimeWarning: invalid value encountered in cast
+  np_h += np.array(hue_factor * 255).astype(np.uint8)
+Epoch 37/100:   1%|#4                                                                                                                                                 | 47/4811   1% ETA 1:54:55Estimated train epoch duration: ~1:57:52
+Training completed - Average loss: 0.0230                                                                                                                                                       
+
+Starting validation...
+Estimated val epoch duration:   ~0:06:50
+Val   37/100:   1%|#3                                                                                                                                                   | 11/1207   1% ETA 06:39Estimated val epoch duration:   ~0:07:20
+Validation completed - Average loss: 0.0794                                                                                                                                                     
+[Fold 0] Epoch 37/100 | train_loss 0.0230 | val_loss 0.0794 | ACC 0.9920 P 0.9737 R 0.9909 F1 0.9822 ROC-AUC 0.9985 PR-AUC 0.9930
+Learning rate updated to: 0.000051
+
+============================================================
+Starting Epoch 38/100
+Training batches: 4811, Validation batches: 1207
+Learning rate: 0.000047
+Gradient accumulation steps: 1
+Effective batch size: 32
+============================================================
+Estimated train epoch duration: ~1:57:01
+Epoch 38/100:   0%|                                                                                                                                                          | 0/4811   0% ETA ?/usr/local/lib/python3.9/site-packages/torchvision/transforms/_functional_pil.py:113: RuntimeWarning: invalid value encountered in cast
+  np_h += np.array(hue_factor * 255).astype(np.uint8)
+Epoch 38/100:   1%|#4                                                                                                                                                 | 47/4811   1% ETA 1:55:22Estimated train epoch duration: ~1:57:14
+Training completed - Average loss: 0.0203                                                                                                                                                       
+
+Starting validation...
+Estimated val epoch duration:   ~0:06:47
+Val   38/100:   1%|#3                                                                                                                                                   | 11/1207   1% ETA 06:43Estimated val epoch duration:   ~0:07:23
+Validation completed - Average loss: 0.0900                                                                                                                                                     
+[Fold 0] Epoch 38/100 | train_loss 0.0203 | val_loss 0.0900 | ACC 0.9919 P 0.9756 R 0.9881 F1 0.9818 ROC-AUC 0.9984 PR-AUC 0.9923
+Learning rate updated to: 0.000044
+
+============================================================
+Starting Epoch 39/100
+Training batches: 4811, Validation batches: 1207
+Learning rate: 0.000041
+Gradient accumulation steps: 1
+Effective batch size: 32
+============================================================
+Estimated train epoch duration: ~1:56:27
+Epoch 39/100:   0%|                                                                                                                                                          | 0/4811   0% ETA ?/usr/local/lib/python3.9/site-packages/torchvision/transforms/_functional_pil.py:113: RuntimeWarning: invalid value encountered in cast
+  np_h += np.array(hue_factor * 255).astype(np.uint8)
+Epoch 39/100:   1%|#4                                                                                                                                                 | 47/4811   1% ETA 1:54:04Estimated train epoch duration: ~1:57:22
+Training completed - Average loss: 0.0203                                                                                                                                                       
+
+Starting validation...
+Estimated val epoch duration:   ~0:06:46
+Val   39/100:   1%|#3                                                                                                                                                   | 11/1207   1% ETA 06:37Estimated val epoch duration:   ~0:07:19
+Validation completed - Average loss: 0.0876                                                                                                                                                     
+[Fold 0] Epoch 39/100 | train_loss 0.0203 | val_loss 0.0876 | ACC 0.9918 P 0.9769 R 0.9861 F1 0.9815 ROC-AUC 0.9985 PR-AUC 0.9930
+Learning rate updated to: 0.000037
+
+============================================================
+Starting Epoch 40/100
+Training batches: 4811, Validation batches: 1207
+Learning rate: 0.000034
+Gradient accumulation steps: 1
+Effective batch size: 32
+============================================================
+Estimated train epoch duration: ~1:56:35
+Epoch 40/100:   0%|                                                                                                                                                          | 0/4811   0% ETA ?/usr/local/lib/python3.9/site-packages/torchvision/transforms/_functional_pil.py:113: RuntimeWarning: invalid value encountered in cast
+  np_h += np.array(hue_factor * 255).astype(np.uint8)
+Epoch 40/100:   1%|#4                                                                                                                                                 | 47/4811   1% ETA 1:55:47Estimated train epoch duration: ~1:58:04
+Training completed - Average loss: 0.0172                                                                                                                                                       
+
+Starting validation...
+Estimated val epoch duration:   ~0:06:46
+Val   40/100:   1%|#3                                                                                                                                                   | 11/1207   1% ETA 06:49Estimated val epoch duration:   ~0:07:20
+Validation completed - Average loss: 0.0811                                                                                                                                                     
+[Fold 0] Epoch 40/100 | train_loss 0.0172 | val_loss 0.0811 | ACC 0.9922 P 0.9750 R 0.9902 F1 0.9825 ROC-AUC 0.9985 PR-AUC 0.9931
+Learning rate updated to: 0.000031
+
+============================================================
+Starting Epoch 41/100
+Training batches: 4811, Validation batches: 1207
+Learning rate: 0.000029
+Gradient accumulation steps: 1
+Effective batch size: 32
+============================================================
+Estimated train epoch duration: ~1:56:30
+Epoch 41/100:   0%|                                                                                                                                                          | 0/4811   0% ETA ?/usr/local/lib/python3.9/site-packages/torchvision/transforms/_functional_pil.py:113: RuntimeWarning: invalid value encountered in cast
+  np_h += np.array(hue_factor * 255).astype(np.uint8)
+Epoch 41/100:   1%|#4                                                                                                                                                 | 47/4811   1% ETA 1:54:21Estimated train epoch duration: ~1:57:11
+Training completed - Average loss: 0.0194                                                                                                                                                       
+
+Starting validation...
+Estimated val epoch duration:   ~0:06:46
+Val   41/100:   1%|#3                                                                                                                                                   | 11/1207   1% ETA 06:36Estimated val epoch duration:   ~0:07:21
+Validation completed - Average loss: 0.0783                                                                                                                                                     
+[Fold 0] Epoch 41/100 | train_loss 0.0194 | val_loss 0.0783 | ACC 0.9921 P 0.9722 R 0.9929 F1 0.9824 ROC-AUC 0.9985 PR-AUC 0.9923
+Learning rate updated to: 0.000026
+
+
+============================================================
+Starting Epoch 42/100
+Training batches: 4811, Validation batches: 1207
+Learning rate: 0.000023
+Gradient accumulation steps: 1
+Effective batch size: 32
+============================================================
+Estimated train epoch duration: ~1:56:28
+Epoch 42/100:   0%|                                                                                                                                                          | 0/4811   0% ETA ?/usr/local/lib/python3.9/site-packages/torchvision/transforms/_functional_pil.py:113: RuntimeWarning: invalid value encountered in cast
+  np_h += np.array(hue_factor * 255).astype(np.uint8)
+Epoch 42/100:   1%|#4                                                                                                                                                 | 47/4811   1% ETA 1:54:24Estimated train epoch duration: ~1:57:22
+Training completed - Average loss: 0.0154                                                                                                                                                       
+
+Starting validation...
+Estimated val epoch duration:   ~0:06:47
+Val   42/100:   1%|#3                                                                                                                                                   | 11/1207   1% ETA 06:44Estimated val epoch duration:   ~0:07:23
+Validation completed - Average loss: 0.0849                                                                                                                                                     
+[Fold 0] Epoch 42/100 | train_loss 0.0154 | val_loss 0.0849 | ACC 0.9921 P 0.9736 R 0.9911 F1 0.9823 ROC-AUC 0.9987 PR-AUC 0.9940
+Learning rate updated to: 0.000021
+
+============================================================
+Starting Epoch 43/100
+Training batches: 4811, Validation batches: 1207
+Learning rate: 0.000019
+Gradient accumulation steps: 1
+Effective batch size: 32
+============================================================
+Estimated train epoch duration: ~1:56:52
+Epoch 43/100:   0%|                                                                                                                                                          | 0/4811   0% ETA ?/usr/local/lib/python3.9/site-packages/torchvision/transforms/_functional_pil.py:113: RuntimeWarning: invalid value encountered in cast
+  np_h += np.array(hue_factor * 255).astype(np.uint8)
+Epoch 43/100:   1%|#4                                                                                                                                                 | 47/4811   1% ETA 1:55:05Estimated train epoch duration: ~1:57:17
+Training completed - Average loss: 0.0147                                                                                                                                                       
+
+Starting validation...
+Estimated val epoch duration:   ~0:06:48
+Val   43/100:   1%|#3                                                                                                                                                   | 11/1207   1% ETA 06:40Estimated val epoch duration:   ~0:07:19
+Validation completed - Average loss: 0.0847                                                                                                                                                     
+[Fold 0] Epoch 43/100 | train_loss 0.0147 | val_loss 0.0847 | ACC 0.9924 P 0.9761 R 0.9897 F1 0.9829 ROC-AUC 0.9985 PR-AUC 0.9931
+Learning rate updated to: 0.000016
+
+============================================================
+Starting Epoch 44/100
+Training batches: 4811, Validation batches: 1207
+Learning rate: 0.000014
+Gradient accumulation steps: 1
+Effective batch size: 32
+============================================================
+Estimated train epoch duration: ~1:56:46
+Epoch 44/100:   0%|                                                                                                                                                          | 0/4811   0% ETA ?/usr/local/lib/python3.9/site-packages/torchvision/transforms/_functional_pil.py:113: RuntimeWarning: invalid value encountered in cast
+  np_h += np.array(hue_factor * 255).astype(np.uint8)
+Epoch 44/100:   1%|#4                                                                                                                                                 | 47/4811   1% ETA 1:56:58Estimated train epoch duration: ~1:58:00
+Training completed - Average loss: 0.0126                                                                                                                                                       
+
+Starting validation...
+Estimated val epoch duration:   ~0:06:47
+Val   44/100:   1%|#3                                                                                                                                                   | 11/1207   1% ETA 07:11Estimated val epoch duration:   ~0:08:01
+Validation completed - Average loss: 0.0900                                                                                                                                                     
+[Fold 0] Epoch 44/100 | train_loss 0.0126 | val_loss 0.0900 | ACC 0.9920 P 0.9749 R 0.9895 F1 0.9821 ROC-AUC 0.9984 PR-AUC 0.9924
+Learning rate updated to: 0.000012
+
+============================================================
+Starting Epoch 45/100
+Training batches: 4811, Validation batches: 1207
+Learning rate: 0.000011
+Gradient accumulation steps: 1
+Effective batch size: 32
+============================================================
+Estimated train epoch duration: ~1:56:35
+Epoch 45/100:   0%|                                                                                                                                                          | 0/4811   0% ETA ?/usr/local/lib/python3.9/site-packages/torchvision/transforms/_functional_pil.py:113: RuntimeWarning: invalid value encountered in cast
+  np_h += np.array(hue_factor * 255).astype(np.uint8)
+Epoch 45/100:   1%|#4                                                                                                                                                 | 47/4811   1% ETA 1:56:17Estimated train epoch duration: ~1:57:41
+Training completed - Average loss: 0.0137                                                                                                                                                       
+
+Starting validation...
+Estimated val epoch duration:   ~0:06:47
+Val   45/100:   1%|#3                                                                                                                                                   | 11/1207   1% ETA 06:43Estimated val epoch duration:   ~0:07:24
+Validation completed - Average loss: 0.0898                                                                                                                                                     
+[Fold 0] Epoch 45/100 | train_loss 0.0137 | val_loss 0.0898 | ACC 0.9923 P 0.9751 R 0.9904 F1 0.9827 ROC-AUC 0.9984 PR-AUC 0.9925
+Learning rate updated to: 0.000009
+
+============================================================
+Starting Epoch 46/100
+Training batches: 4811, Validation batches: 1207
+Learning rate: 0.000007
+Gradient accumulation steps: 1
+Effective batch size: 32
+============================================================
+Estimated train epoch duration: ~1:56:50
+Epoch 46/100:   0%|                                                                                                                                                          | 0/4811   0% ETA ?/usr/local/lib/python3.9/site-packages/torchvision/transforms/_functional_pil.py:113: RuntimeWarning: invalid value encountered in cast
+  np_h += np.array(hue_factor * 255).astype(np.uint8)
+Epoch 46/100:   1%|#4                                                                                                                                                 | 47/4811   1% ETA 1:53:57Estimated train epoch duration: ~1:56:58
+Training completed - Average loss: 0.0134                                                                                                                                                       
+
+Starting validation...
+Estimated val epoch duration:   ~0:06:49
+Val   46/100:   1%|#3                                                                                                                                                   | 11/1207   1% ETA 06:42Estimated val epoch duration:   ~0:07:22
+Validation completed - Average loss: 0.0930                                                                                                                                                     
+[Fold 0] Epoch 46/100 | train_loss 0.0134 | val_loss 0.0930 | ACC 0.9927 P 0.9783 R 0.9888 F1 0.9835 ROC-AUC 0.9984 PR-AUC 0.9926
+Learning rate updated to: 0.000006
+
+============================================================
+Starting Epoch 47/100
+Training batches: 4811, Validation batches: 1207
+Learning rate: 0.000005
+Gradient accumulation steps: 1
+Effective batch size: 32
+============================================================
+Estimated train epoch duration: ~1:56:48
+Epoch 47/100:   0%|                                                                                                                                                          | 0/4811   0% ETA ?/usr/local/lib/python3.9/site-packages/torchvision/transforms/_functional_pil.py:113: RuntimeWarning: invalid value encountered in cast
+  np_h += np.array(hue_factor * 255).astype(np.uint8)
+Epoch 47/100:   1%|#4                                                                                                                                                 | 47/4811   1% ETA 1:55:11Estimated train epoch duration: ~1:57:52
+Training completed - Average loss: 0.0121                                                                                                                                                       
+
+Starting validation...
+Estimated val epoch duration:   ~0:06:47
+Val   47/100:   1%|#3                                                                                                                                                   | 11/1207   1% ETA 06:41Estimated val epoch duration:   ~0:07:19
+Validation completed - Average loss: 0.0925                                                                                                                                                     
+[Fold 0] Epoch 47/100 | train_loss 0.0121 | val_loss 0.0925 | ACC 0.9925 P 0.9758 R 0.9905 F1 0.9831 ROC-AUC 0.9984 PR-AUC 0.9929
+Learning rate updated to: 0.000004
+Early stopping at epoch 47 (no PR-AUC improvement for 20 epochs).
+Best PR-AUC fold 0: 0.9951
+Best checkpoint saved to: outputs/cls_runs_fast/best_fold0.pt
+[ec2-user@ip-172-31-15-117 ~]$ 
