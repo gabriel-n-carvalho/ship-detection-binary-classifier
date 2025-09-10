@@ -1,158 +1,158 @@
-# 🚢 Airbus Ship Detection - Binary Classifier
+# 🚢 Deteção de Navios - Classificador Binário
 
-A production-ready, deterministic binary classifier for detecting ships in satellite imagery using the Airbus Ship Detection Challenge dataset. Built with PyTorch and optimized for CPU-only training in Docker containers.
+Um classificador binário determinístico, pronto para produção, para detetar navios em imagens de satélite utilizando o conjunto de dados Airbus Ship Detection Challenge. Construído com PyTorch e otimizado para treino apenas em CPU em contentores Docker.
 
-## 📋 Table of Contents
+## 📋 Índice
 
-- [Overview](#overview)
-- [Features](#features)
-- [Project Structure](#project-structure)
-- [Prerequisites](#prerequisites)
-- [Quick Start](#quick-start)
-- [Usage](#usage)
-- [Configuration](#configuration)
-- [Training Details](#training-details)
-- [Data Processing](#data-processing)
-- [Model Architecture](#model-architecture)
-- [Reproducibility](#reproducibility)
-- [Performance Optimization](#performance-optimization)
-- [Troubleshooting](#troubleshooting)
-- [Contributing](#contributing)
-- [License](#license)
+- [Visão Geral](#visão-geral)
+- [Funcionalidades](#funcionalidades)
+- [Estrutura do Projeto](#estrutura-do-projeto)
+- [Pré-requisitos](#pré-requisitos)
+- [Início Rápido](#início-rápido)
+- [Utilização](#utilização)
+- [Configuração](#configuração)
+- [Detalhes do Treino](#detalhes-do-treino)
+- [Processamento de Dados](#processamento-de-dados)
+- [Arquitetura do Modelo](#arquitetura-do-modelo)
+- [Reprodutibilidade](#reprodutibilidade)
+- [Otimização de Desempenho](#otimização-de-desempenho)
+- [Resolução de Problemas](#resolução-de-problemas)
+- [Contribuir](#contribuir)
+- [Licença](#licença)
 
-## 🎯 Overview
+## 🎯 Visão Geral
 
-This project converts the complex Airbus Ship Detection segmentation challenge into a simpler binary classification problem: **ship vs. no-ship**. It's designed for production environments where GPU resources aren't available, using advanced CPU optimization techniques and deterministic training for full reproducibility.
+Este projeto transforma o complexo desafio de segmentação do Airbus Ship Detection num problema mais simples de classificação binária: **navio vs. sem navio**. É concebido para ambientes de produção onde não existem recursos de GPU, utilizando técnicas avançadas de otimização para CPU e treino determinístico para total reprodutibilidade.
 
-**Key Use Cases:**
+**Principais casos de utilização:**
 
-- Maritime surveillance and monitoring
-- Satellite image analysis
-- Ship detection in remote sensing data
-- Educational/research purposes in computer vision
+- Vigilância e monitorização marítima
+- Análise de imagens de satélite
+- Deteção de navios em dados de deteção remota
+- Fins educativos/de investigação em visão por computador
 
-## ✨ Features
+## ✨ Funcionalidades
 
-### 🚀 **Core Capabilities**
+### 🚀 **Capacidades Principais**
 
-- **Binary Classification**: Ship detection (1) vs. no ship (0)
-- **Deterministic Training**: Full reproducibility across runs
-- **Early Stopping**: Based on PR-AUC with configurable patience
-- **Checkpoint Resuming**: Resume training from any checkpoint
-- **CPU Optimization**: ARM64 optimized with threading optimizations
+- **Classificação Binária**: Deteção de navios (1) vs. sem navio (0)
+- **Treino Determinístico**: Reprodutibilidade total entre execuções
+- **Paragem Antecipada (Early Stopping)**: Com base em PR-AUC com paciência configurável
+- **Retoma por Checkpoint**: Retomar o treino a partir de qualquer checkpoint
+- **Otimização para CPU**: Otimizado para ARM64 com melhorias de threading
 
-### 🔧 **Technical Features**
+### 🔧 **Funcionalidades Técnicas**
 
-- **Docker Containerization**: Production-ready deployment
-- **Data Augmentation**: Training-time transformations for robustness
-- **Class Imbalance Handling**: Automatic positive weight calculation
-- **Stratified Sampling**: Maintains class balance in data subsets
-- **Comprehensive Logging**: Real-time progress and metrics
-- **Resource Management**: Configurable memory and CPU limits
+- **Contentorização com Docker**: Pronto para implantação em produção
+- **Aumento de Dados (Data Augmentation)**: Transformações no treino para robustez
+- **Gestão de Desbalanceamento de Classes**: Cálculo automático de `pos_weight`
+- **Amostragem Estratificada**: Mantém o equilíbrio de classes em subconjuntos
+- **Registo Abrangente**: Progresso e métricas em tempo real
+- **Gestão de Recursos**: Limites configuráveis de memória e CPU
 
-### 📊 **Metrics & Monitoring**
+### 📊 **Métricas e Monitorização**
 
-- **Training Metrics**: Loss, learning rate, batch timing
-- **Validation Metrics**: Accuracy, Precision, Recall, F1, ROC-AUC, PR-AUC
-- **Progress Tracking**: ETA estimates, real-time progress bars
-- **Checkpoint Management**: Best and last model saving
+- **Métricas de Treino**: Loss, taxa de aprendizagem, tempo por batch
+- **Métricas de Validação**: Acurácia, Precisão, Revocação, F1, ROC-AUC, PR-AUC
+- **Acompanhamento de Progresso**: Estimativas de ETA e barras de progresso em tempo real
+- **Gestão de Checkpoints**: Guarda o melhor e o último modelo
 
-## 📁 Project Structure
+## 📁 Estrutura do Projeto
 
 ```
 final-project/
-├── airbus-ship-detection/          # Dataset directory (You need to download the dataset from Kaggle)
-│   ├── train_v2/                   # Training images
-├── labels/                         # Label files and data splits
-│   ├── binary_labels.csv           # Binary ship/no-ship labels
-│   ├── segmentations_labels.csv    # Original segmentation data (This file comes with the dataset from Kaggle)
-│   └── splits/                     # Train/validation splits
-│       ├── train.csv               # Training set
-│       └── val.csv                 # Validation set
-├── utils/                          # Data preprocessing utilities
-│   ├── make_binary_labels.py       # Convert segmentation to binary
-│   └── make_train_val_split.py     # Create train/val splits
-├── outputs/                        # Model outputs and checkpoints
-│   └── models/                     # Saved model checkpoints
-├── docker-compose.yml              # Container orchestration
-├── Dockerfile                      # Container definition
-├── requirements.txt                # Python dependencies
-├── train_binary_classifier.py      # Main training script
-└── README.md                       # This file
+├── airbus-ship-detection/          # Diretório do dataset (é necessário fazer o download no Kaggle)
+│   ├── train_v2/                   # Imagens de treino
+├── labels/                         # Ficheiros de rótulos e divisões
+│   ├── binary_labels.csv           # Rótulos binários navio/sem navio
+│   ├── segmentations_labels.csv    # Dados originais de segmentação (vem com o dataset do Kaggle)
+│   └── splits/                     # Divisões treino/validação
+│       ├── train.csv               # Conjunto de treino
+│       └── val.csv                 # Conjunto de validação
+├── utils/                          # Utilitários de pré-processamento de dados
+│   ├── make_binary_labels.py       # Converter segmentação para binário
+│   └── make_train_val_split.py     # Criar divisões treino/validação
+├── outputs/                        # Saídas do modelo e checkpoints
+│   └── models/                     # Checkpoints guardados
+├── docker-compose.yml              # Orquestração de contentores
+├── Dockerfile                      # Definição do contentor
+├── requirements.txt                # Dependências Python
+├── train_binary_classifier.py      # Script principal de treino
+└── README.md                       # Este ficheiro
 ```
 
-## 📋 Prerequisites
+## 📋 Pré-requisitos
 
-### **System Requirements**
+### **Requisitos do Sistema**
 
-- **OS**: Linux, macOS, or Windows with Docker
-- **RAM**: Minimum 16GB, recommended 64GB+
-- **CPU**: Multi-core processor (ARM64 or x86_64)
-- **Storage**: 10GB+ free space for dataset and models
+- **SO**: Linux, macOS ou Windows com Docker
+- **RAM**: Mínimo 16 GB, recomendado 64 GB+
+- **CPU**: Processador multi‑core (ARM64 ou x86_64)
+- **Armazenamento**: 10 GB+ de espaço livre para dataset e modelos
 
-### **Software Requirements**
+### **Requisitos de Software**
 
-- **Docker**: Version 20.10+
-- **Docker Compose**: Version 2.0+
-- **Git**: For cloning the repository
+- **Docker**: Versão 20.10+
+- **Docker Compose**: Versão 2.0+
+- **Git**: Para clonar o repositório
 
-### **Dataset**
+### **Conjunto de Dados**
 
-- **Airbus Ship Detection Challenge**: Download from [Kaggle](https://www.kaggle.com/c/airbus-ship-detection)
+- **Airbus Ship Detection Challenge**: Transferir de [Kaggle](https://www.kaggle.com/c/airbus-ship-detection)
 
-## 🚀 Run the training
+## 🚀 Início Rápido
 
-### **1. Clone and Setup**
+### **1. Clonar e Configurar**
 
 ```bash
 git clone https://github.com/gabriel-n-carvalho/ship-detection-binary-classifier
 cd ship-detection-binary-classifier
 ```
 
-### **2. Download the dataset**
+### **2. Transferir o dataset**
 
-- Download the dataset from Kaggle
-- Copy the `train_v2/` folder from the `airbus-ship-detection` dataset into the root directory of your project, so your folder structure matches the example above.
-- Place the segmentation labels file `train_ship_segmentations_v2.csv` into `labels/train_ship_segmentations_v2.csv`.
-- Run the following commands to convert the segmentation labels to binary labels and create a stratified split of the data into train and val sets.
+- Transfira o dataset do Kaggle
+- Copie a pasta `train_v2/` do dataset `airbus-ship-detection` para o diretório raiz do projeto, para que a sua estrutura de pastas corresponda ao exemplo acima.
+- Coloque o ficheiro de rótulos de segmentação `train_ship_segmentations_v2.csv` em `labels/train_ship_segmentations_v2.csv`.
+- Execute os seguintes comandos para converter os rótulos de segmentação em rótulos binários e criar uma divisão estratificada dos dados em conjuntos de treino e validação.
 
-### **3. Prepare Data**
+### **3. Preparar Dados**
 
 ```bash
-# Convert segmentation labels to binary (if needed). This script converts the original segmentation labels to binary labels.
+# Converter rótulos de segmentação para binário (se necessário). Este script converte os rótulos originais em rótulos binários.
 python utils/make_binary_labels.py
 
-# Create label splits (if not already done). This script creates a stratified split of the data into train and val sets.
+# Criar divisões de rótulos (se ainda não existirem). Este script cria uma divisão estratificada em treino e validação.
 python utils/make_train_val_split.py
 ```
 
-### **4. Start Training with Docker**
+### **4. Iniciar o Treino com Docker**
 
 ```bash
-# This command will start the training process and you will see the progress bars in the foreground.
+# Este comando inicia o processo de treino e verá as barras de progresso no primeiro plano.
 docker-compose run --rm efficientnet-training
 
 ```
 
-**Note:** Using `docker-compose up` can cause tqdm progress bars to be buffered and only display after training completes, due to how output is handled ([see tqdm issue #771](https://github.com/tqdm/tqdm/issues/771)). For real-time progress updates, it is recommended to use `docker-compose run` instead.
+**Nota:** Usar `docker-compose up` pode fazer com que as barras de progresso do tqdm sejam colocadas em buffer e apenas apareçam após o fim do treino, devido à forma como o output é tratado ([ver issue #771 do tqdm](https://github.com/tqdm/tqdm/issues/771)). Para atualizações em tempo real, recomenda-se usar `docker-compose run`.
 
-### **5. Monitor Training**
+### **5. Monitorizar o Treino**
 
 ```bash
-# With `docker-compose run`, you will see live tqdm progress in the foreground.
+# Com `docker-compose run`, verá o progresso do tqdm em tempo real no primeiro plano.
 
-# If you still choose to use `up`, logs can be tailed but tqdm may not update live:
+# Se optar por usar `up`, pode seguir os logs, mas o tqdm pode não atualizar em tempo real:
 docker-compose logs -f
 
-# Check container status
+# Verificar o estado dos contentores
 docker-compose ps
 ```
 
-## 📖 Usage
+## 📖 Utilização
 
-### **Command Line Interface**
+### **Interface de Linha de Comandos**
 
-The training script supports extensive command-line configuration:
+O script de treino suporta uma configuração extensa por linha de comandos:
 
 ```bash
 python train_binary_classifier.py \
@@ -168,236 +168,236 @@ python train_binary_classifier.py \
     --subset-size 1000
 ```
 
-### **Docker Environment Variables**
+### **Variáveis de Ambiente do Docker**
 
-Configure training parameters via environment variables:
+Configure os parâmetros de treino via variáveis de ambiente:
 
 ```bash
-# Override default settings
+# Substituir valores por defeito
 export SEED=123
 export BATCH_SIZE=64
 export EPOCHS=200
 export LR=1e-4
 
-# Start training
+# Iniciar treino
 docker-compose up
 ```
 
-### **Data Subsetting for Development**
+### **Subconjuntos de Dados para Desenvolvimento**
 
-Use data subsets for faster iteration during development:
+Use subconjuntos de dados para iteração mais rápida durante o desenvolvimento:
 
 ```bash
-# Use 10% of data
+# Usar 10% dos dados
 python train_binary_classifier.py --subset-fraction 0.1
 
-# Use specific number of samples
+# Usar um número específico de amostras
 python train_binary_classifier.py --subset-size 1000
 ```
 
-## ⚙️ Configuration
+## ⚙️ Configuração
 
-### **Training Hyperparameters**
+### **Hiperparâmetros de Treino**
 
-| Parameter             | Default | Description                     |
-| --------------------- | ------- | ------------------------------- |
-| `SEED`                | 42      | Random seed for reproducibility |
-| `BATCH_SIZE`          | 32      | Training batch size             |
-| `EPOCHS`              | 100     | Maximum training epochs         |
-| `LR`                  | 3e-4    | Learning rate                   |
-| `IMG_SIZE`            | 256     | Input image size                |
-| `GRAD_ACCUM_STEPS`    | 1       | Gradient accumulation steps     |
-| `EARLY_STOP_PATIENCE` | 20      | Early stopping patience         |
+| Parâmetro             | Predefinição | Descrição                                   |
+| --------------------- | ------------ | ------------------------------------------- |
+| `SEED`                | 42           | Semente aleatória para reprodutibilidade    |
+| `BATCH_SIZE`          | 32           | Tamanho do batch de treino                  |
+| `EPOCHS`              | 100          | Número máximo de épocas                     |
+| `LR`                  | 3e-4         | Taxa de aprendizagem                        |
+| `IMG_SIZE`            | 256          | Tamanho da imagem de entrada                |
+| `GRAD_ACCUM_STEPS`    | 1            | Passos de acumulação de gradientes          |
+| `EARLY_STOP_PATIENCE` | 20           | Paciência para paragem antecipada           |
 
-### **Model Architecture**
+### **Arquitetura do Modelo**
 
-- **Base Model**: EfficientNet-V2-B0 (ImageNet pretrained)
-- **Input Size**: 256x256 RGB images
-- **Output**: Single sigmoid output (0-1 probability)
-- **Loss Function**: BCEWithLogitsLoss with class balancing
+- **Modelo Base**: EfficientNet-V2-B0 (pré‑treinado no ImageNet)
+- **Tamanho de Entrada**: Imagens RGB 256x256
+- **Saída**: Único sigmoid (probabilidade 0-1)
+- **Função de Perda**: BCEWithLogitsLoss com balanceamento de classes
 
-### **Data Augmentation**
+### **Aumento de Dados**
 
-**Training Transforms:**
+**Transformações de Treino:**
 
-- Resize to 256x256
-- Random horizontal flip (50%)
-- Random vertical flip (20%)
-- Random rotation (±5°)
-- Color jittering
-- ImageNet normalization
+- Redimensionar para 256x256
+- Flip horizontal aleatório (50%)
+- Flip vertical aleatório (20%)
+- Rotação aleatória (±5°)
+- Variação de cor (color jitter)
+- Normalização do ImageNet
 
-**Validation Transforms:**
+**Transformações de Validação:**
 
-- Resize to 256x256
-- ImageNet normalization
+- Redimensionar para 256x256
+- Normalização do ImageNet
 
-## 🎓 Training Details
+## 🎓 Detalhes do Treino
 
-### **Training Loop**
+### **Ciclo de Treino**
 
-1. **Epoch Initialization**: Set random seeds, create progress bars
-2. **Training Phase**: Forward pass, loss calculation, backpropagation
-3. **Validation Phase**: Model evaluation, metric computation
-4. **Checkpointing**: Save best model (PR-AUC) and last checkpoint
-5. **Early Stopping**: Monitor PR-AUC improvement
+1. **Inicialização da Época**: Definir sementes aleatórias, criar barras de progresso
+2. **Fase de Treino**: Forward, cálculo de loss, backpropagation
+3. **Fase de Validação**: Avaliação do modelo, cálculo de métricas
+4. **Checkpoints**: Guardar o melhor modelo (PR-AUC) e o último checkpoint
+5. **Paragem Antecipada**: Monitorizar a melhoria do PR-AUC
 
-### **Loss Function**
+### **Função de Perda**
 
 ```python
-# Automatic class balancing
+# Balanceamento automático de classes
 pos_weight = max(1.0, negative_samples / positive_samples)
 criterion = nn.BCEWithLogitsLoss(pos_weight=pos_weight)
 ```
 
-### **Optimization**
+### **Otimização**
 
-- **Optimizer**: AdamW with weight decay
-- **Scheduler**: Cosine annealing learning rate
-- **Gradient Clipping**: Norm clipping at 1.0
-- **Gradient Accumulation**: Configurable for effective larger batches
+- **Otimizador**: AdamW com weight decay
+- **Agendador**: Cosine annealing da taxa de aprendizagem
+- **Clipping de Gradiente**: Clipping da norma em 1.0
+- **Acumulação de Gradientes**: Configurável para batches efetivos maiores
 
-### **Metrics**
+### **Métricas**
 
-- **Accuracy**: Overall classification accuracy
-- **Precision**: Ship detection precision
-- **Recall**: Ship detection recall
-- **F1-Score**: Harmonic mean of precision and recall
-- **ROC-AUC**: Area under ROC curve
-- **PR-AUC**: Area under precision-recall curve (primary metric)
+- **Acurácia**: Acurácia global de classificação
+- **Precisão**: Precisão na deteção de navios
+- **Revocação**: Revocação na deteção de navios
+- **F1-Score**: Média harmónica de precisão e revocação
+- **ROC-AUC**: Área sob a curva ROC
+- **PR-AUC**: Área sob a curva precisão‑revocação (métrica principal)
 
-## 🔄 Data Processing
+## 🔄 Processamento de Dados
 
-### **Data Pipeline**
+### **Pipeline de Dados**
 
-1. **Image Loading**: PIL-based RGB conversion with error handling
-2. **Transformation**: PyTorch transforms with data augmentation
-3. **Batching**: Deterministic DataLoader with worker seeding
-4. **Device Transfer**: CPU-optimized data movement
+1. **Carregamento de Imagem**: Conversão para RGB baseada em PIL com tratamento de erros
+2. **Transformação**: Transforms do PyTorch com aumento de dados
+3. **Batching**: DataLoader determinístico com seed nos workers
+4. **Transferência para Dispositivo**: Movimentação de dados otimizada para CPU
 
-### **Label Processing**
+### **Processamento de Rótulos**
 
-- **Binary Conversion**: Segmentation masks → binary labels
-- **Stratified Splitting**: Maintains class balance in train/val sets
-- **Type Stability**: Consistent float32 dtype for labels
+- **Conversão Binária**: Máscaras de segmentação → rótulos binários
+- **Divisão Estratificada**: Mantém o equilíbrio de classes em treino/validação
+- **Estabilidade de Tipo**: `float32` consistente para rótulos
 
-### **Data Validation**
+### **Validação de Dados**
 
-- **Class Balance Check**: Ensures both positive and negative samples
-- **Image Loading**: Graceful handling of corrupted images
-- **Label Consistency**: Validation of label format and values
+- **Verificação de Balanceamento**: Garante amostras positivas e negativas
+- **Carregamento de Imagem**: Tratamento gracioso de imagens corrompidas
+- **Consistência de Rótulos**: Validação do formato e valores dos rótulos
 
-## 🏗️ Model Architecture
+## 🏗️ Arquitetura do Modelo
 
 ### **EfficientNet-V2-B0**
 
-- **Architecture**: Compound scaling with inverted residuals
-- **Parameters**: ~7.1M trainable parameters
-- **Input**: 256x256x3 RGB images
-- **Output**: Single logit for binary classification
-- **Pretraining**: ImageNet-1K weights
+- **Arquitetura**: Escalonamento composto com blocos residuais invertidos
+- **Parâmetros**: ~7,1M parâmetros treináveis
+- **Entrada**: 256x256x3 imagens RGB
+- **Saída**: Único logit para classificação binária
+- **Pré‑treino**: Pesos do ImageNet‑1K
 
-### **Model Modifications**
+### **Modificações no Modelo**
 
 ```python
 model = timm.create_model(
     MODEL_NAME,
     pretrained=True,
-    num_classes=1  # Binary classification
+    num_classes=1  # Classificação binária
 )
 ```
 
-## 🔒 Reproducibility
+## 🔒 Reprodutibilidade
 
-### **Deterministic Training**
+### **Treino Determinístico**
 
-- **Seed Control**: All random generators seeded consistently
-- **RNG State**: Complete state saving/restoration for resuming
-- **Worker Seeding**: Deterministic DataLoader worker initialization
-- **Algorithm Selection**: PyTorch deterministic algorithms enforced
+- **Controlo de Sementes**: Todos os geradores aleatórios com a mesma seed
+- **Estado do RNG**: Guarda/restaura o estado completo para retomar
+- **Seed dos Workers**: Inicialização determinística dos workers do DataLoader
+- **Seleção de Algoritmos**: Algoritmos determinísticos do PyTorch forçados
 
-### **Checkpoint System**
+### **Sistema de Checkpoints**
 
-- **Best Model**: Saved based on PR-AUC improvement
-- **Last Checkpoint**: Always saved for resuming
-- **RNG State**: Complete random state preservation
-- **Metadata**: Model configuration and training history
+- **Melhor Modelo**: Guardado com base na melhoria do PR-AUC
+- **Último Checkpoint**: Sempre guardado para retomar
+- **Estado do RNG**: Preservação completa do estado aleatório
+- **Metadados**: Configuração do modelo e histórico de treino
 
-## ⚡ Performance Optimization
+## ⚡ Otimização de Desempenho
 
-### **CPU Optimization**
+### **Otimização para CPU**
 
-- **Threading**: Optimal OpenMP/MKL/BLAS thread configuration
-- **Memory Management**: Conservative shared memory settings
-- **Data Loading**: Single worker in Docker to avoid conflicts
-- **Batch Processing**: Efficient tensor operations
+- **Threading**: Configuração ótima de threads OpenMP/MKL/BLAS
+- **Gestão de Memória**: Definições conservadoras de memória partilhada
+- **Carregamento de Dados**: Um único worker no Docker para evitar conflitos
+- **Processamento em Batch**: Operações de tensores eficientes
 
-### **Docker Optimizations**
+### **Otimizações no Docker**
 
-- **Resource Limits**: Configurable memory and CPU allocation
-- **Shared Memory**: 16GB shm_size for DataLoader stability
-- **Volume Mounts**: Efficient data access and persistence
-- **Environment Variables**: Optimized PyTorch settings
+- **Limites de Recursos**: Alocação configurável de memória e CPU
+- **Memória Partilhada**: `shm_size` de 16 GB para estabilidade do DataLoader
+- **Montagens de Volumes**: Acesso eficiente a dados e persistência
+- **Variáveis de Ambiente**: Definições do PyTorch otimizadas
 
-### **Memory Management**
+### **Gestão de Memória**
 
-- **Gradient Accumulation**: Effective larger batch sizes
-- **Checkpoint Cleanup**: Automatic garbage collection
-- **Tensor Optimization**: CPU-specific tensor operations
-- **Shared Memory**: Docker container memory optimization
+- **Acumulação de Gradientes**: Batches efetivos maiores
+- **Limpeza de Checkpoints**: Garbage collection automática
+- **Otimização de Tensores**: Operações específicas para CPU
+- **Memória Partilhada**: Otimização de memória no contentor Docker
 
-## 🐛 Troubleshooting
+## 🐛 Resolução de Problemas
 
-### **Common Issues**
+### **Problemas Comuns**
 
-#### **Out of Memory**
+#### **Falta de Memória (OOM)**
 
 ```bash
-# Reduce batch size
+# Reduzir o tamanho do batch
 export BATCH_SIZE=16
 
-# Reduce image size
+# Reduzir o tamanho da imagem
 export IMG_SIZE=128
 
-# Use data subsetting
+# Usar subconjunto de dados
 --subset-size 500
 ```
 
-#### **Slow Training**
+#### **Treino Lento**
 
 ```bash
-# Increase batch size (if memory allows)
+# Aumentar o batch (se a memória permitir)
 export BATCH_SIZE=64
 
-# Reduce image size
+# Reduzir o tamanho da imagem
 export IMG_SIZE=128
 
-# Use gradient accumulation
+# Usar acumulação de gradientes
 export GRAD_ACCUM_STEPS=2
 ```
 
-#### **Docker Issues**
+#### **Problemas com Docker**
 
 ```bash
-# Check container logs
+# Ver logs do contentor
 docker-compose logs
 
-# Restart container
+# Reiniciar o contentor
 docker-compose restart
 
-# Check resource usage
+# Ver consumo de recursos
 docker stats
 ```
 
-### **Debug Mode**
+### **Modo de Depuração**
 
-Enable verbose logging for debugging:
+Ativar logs verbosos para depuração:
 
 ```bash
-# Set environment variable
+# Definir variável de ambiente
 export PYTHONUNBUFFERED=1
 
-# Run with debug output
+# Executar com output de debug
 python -u train_binary_classifier.py --subset-size 100
 ```
 
